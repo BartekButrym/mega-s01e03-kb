@@ -4,7 +4,7 @@ title: '#4471 · three problems, not one'
 owner: Bartosz Butrym
 status: open
 reviewed: 2026-10-28
-signature: Bartosz Butrym
+signature: v1.eyJzdWIiOiIzMzY0IiwiYXVkIjoiY2hhbGxlbmdlOndoYXQtaXQtc2hvd3MiLCJpYXQiOjE3OTMxOTc1MzksImV4cCI6MTc5MzI4MzkzOX0.vbCkaq5gYZwR0csOFBKBSzMMvrj0BE6JVyYvHp_YBZU
 ---
 
 <script>
