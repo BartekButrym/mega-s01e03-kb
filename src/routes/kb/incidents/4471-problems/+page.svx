@@ -35,7 +35,7 @@ The queued parser fix closes only the first row below. The other two keep coming
   from the reporter's browser, and the guess disagrees with the tenant on dozens of reports.
 - **`shift`** is the desk's own list of one-day moves (`desk-notes.json`). These reports describe a date one day off,
   or one meeting on two days in two cities. No swap of day and month explains that, so the parser fix cannot close them.
-  The #4471 table counted them under `parser` and footnoted them.
+  As the desk counts, they stay in the `parser` row, where their tenant files them, and get their own ticket too.
 
 ## Why they were merged
 

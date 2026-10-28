@@ -1,30 +1,29 @@
-// One problem per fix. causes.ts sorts reports by tenant and channel; a report whose body
-// describes a different symptom than its cause predicts is its own problem, whatever it was filed under.
-import { causeOf, uniqueById, type Report } from '#lib/kb/causes';
+// One problem per fix, counted the desk's way. causes.ts files each report under its cause, by
+// tenant and channel; the reports the desk read as something else (desk-notes.json) stay counted
+// where they are filed, and the problem they show is counted from them on its own row.
+import { groupByCause, readAs, uniqueById, type Report } from '#lib/kb/causes';
 import { tenantOf } from '#lib/kb/locales';
 
 // `parser` and `hint` both flip day and month. `shift` moves a date by one day: the desk's
-// one-day-move reports (desk-notes.json), which no date-order fix can reach.
+// one-day-move reports, which no date-order fix can reach.
 export type Problem = 'parser' | 'hint' | 'shift' | 'unplaced';
 
-export type ProblemGroup = { problem: Problem; reports: Report[]; tenants: number; firstSeen: string; lastSeen: string };
-
-export function problemOf(r: Report, oneDayMove: readonly string[]): Problem {
-  if (oneDayMove.includes(r.id)) return 'shift';
-  return causeOf(r, tenantOf(r)) ?? 'unplaced';
-}
+export type ProblemGroup = { problem: Problem; reports: Report[]; tenants: number; firstSeen: string; lastSeen: string; filedUnder?: Problem };
 
 export function groupByProblem(reports: Report[], ticket: number, oneDayMove: readonly string[]): ProblemGroup[] {
   const merged = uniqueById(reports).filter((r) => r.mergedInto === ticket);
-  const by = new Map<Problem, Report[]>();
-  for (const r of merged) {
-    const p = problemOf(r, oneDayMove);
-    by.set(p, [...(by.get(p) ?? []), r]);
+  const groups: ProblemGroup[] = groupByCause(merged, tenantOf).map((g) => ({
+    problem: g.cause,
+    reports: g.reports,
+    tenants: g.tenants,
+    firstSeen: g.firstSeen,
+    lastSeen: g.lastSeen,
+  }));
+  const shift = merged.filter((r) => oneDayMove.includes(r.id));
+  if (shift.length) {
+    const days = shift.map((r) => r.receivedAt.slice(0, 10)).sort();
+    const filedUnder = groupByCause(merged, tenantOf).find((g) => readAs(g, oneDayMove))?.cause;
+    groups.push({ problem: 'shift', reports: shift, tenants: new Set(shift.map((r) => r.tenant)).size, firstSeen: days[0], lastSeen: days[days.length - 1], filedUnder });
   }
-  return [...by.entries()]
-    .map(([problem, rs]) => {
-      const days = rs.map((r) => r.receivedAt.slice(0, 10)).sort();
-      return { problem, reports: rs, tenants: new Set(rs.map((r) => r.tenant)).size, firstSeen: days[0], lastSeen: days[days.length - 1] };
-    })
-    .sort((a, b) => b.reports.length - a.reports.length);
+  return groups;
 }

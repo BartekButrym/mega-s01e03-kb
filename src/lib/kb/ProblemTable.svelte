@@ -43,7 +43,10 @@
 </table>
 
 {#each groups.filter((g) => g.problem === 'shift') as g (g.problem)}
-  <p class="note">The {g.reports.length} one-day reports: {g.reports.map((r) => r.id).join(', ')}.</p>
+  <p class="note">
+    The {g.reports.length} one-day reports stay counted under <code>{g.filedUnder}</code>, where their tenant files them:
+    {g.reports.map((r) => r.id).join(', ')}.
+  </p>
 {/each}
 
 <style>
