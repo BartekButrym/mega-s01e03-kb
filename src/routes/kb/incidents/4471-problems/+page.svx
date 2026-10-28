@@ -17,7 +17,8 @@ signature: Bartosz Butrym
 The reports in it describe three problems, each with its own fix, so each has its own ticket now.
 
 <Callout kind="warn">
-The queued parser fix closes only the first row below. The other two keep coming in after it ships.
+Engineering update, 05 Oct: `parser` fixed (`fix(dates): parse dd/mm for eu locales`), `hint` won't fix (booking-v3 form retired).
+Nothing has been done about `shift`: its ticket stays open.
 </Callout>
 
 ## The problems
