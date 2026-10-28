@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<!--e2jw2j--><!----><title>#4471 · three problems, not one · support kb</title>
+		<style>:root{--bg: #fbfaf7;--fg: #1d1d1b;--muted: #6b6a66;--line: #e3e0d8;--accent: #2f6f5e;--warn: #b4501f;--warn-bg: #fbeee6;--note-bg: #eef5f2;--mono: ui-monospace, "Cascadia Code", Menlo, monospace}@media(prefers-color-scheme:dark){:root{--bg: #171716;--fg: #ecebe6;--muted: #9c9a93;--line: #34332f;--accent: #6fbfa6;--warn: #f0905d;--warn-bg: #3a2418;--note-bg: #1d2c27}}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 system-ui,sans-serif}.kb table{border-collapse:collapse;width:100%;margin:1rem 0;font-size:.92rem}.kb th,.kb td{border-bottom:1px solid var(--line);padding:.35rem .5rem;text-align:left}.kb code{font-family:var(--mono);font-size:.88em}.kb a{color:var(--accent)}.kb.svelte-e2jw2j{max-width:760px;margin:0 auto;padding:2rem 16px 4rem}.crumb.svelte-e2jw2j{font:.8rem var(--mono);text-decoration:none;color:var(--muted)}h1.svelte-e2jw2j{margin:.25rem 0 .5rem;line-height:1.2}.meta.svelte-e2jw2j{display:flex;flex-wrap:wrap;gap:.5rem 1rem;color:var(--muted);font-size:.85rem;margin:0}.status.svelte-e2jw2j{border:1px solid var(--line);border-radius:99px;padding:0 .6rem}.stale.svelte-e2jw2j{color:var(--warn);font-weight:600}.banner.svelte-e2jw2j{background:var(--warn-bg);color:var(--warn);padding:.6rem 1rem;border-radius:6px}footer.svelte-e2jw2j{margin-top:3rem;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);padding-top:1rem}
+</style>
+		<style>aside.svelte-17bri61{border-left:4px solid var(--accent);padding:.5rem 1rem;margin:1rem 0;background:var(--note-bg)}aside.warn.svelte-17bri61{border-color:var(--warn);background:var(--warn-bg)}
+</style>
+		<style>.sum.svelte-12oyimm{font-size:1.1rem}.tags.svelte-12oyimm,.note.svelte-12oyimm{color:var(--muted);font-size:.85em}.wrong.svelte-12oyimm td:where(.svelte-12oyimm){background:var(--warn-bg)}.wrong.svelte-12oyimm td:where(.svelte-12oyimm):last-child{color:var(--warn);font-weight:600}
+</style>
+		<style>.stamp.svelte-1280m42{margin:2rem 0 0;font:.85rem var(--mono);color:var(--muted)}.stamp.svelte-1280m42 b:where(.svelte-1280m42){color:var(--accent);letter-spacing:.04em}.missing.svelte-1280m42{color:var(--warn)}
+</style>
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · three problems, not one</h1> <p class="meta svelte-e2jw2j"><span>owner <b>Bartosz Butrym</b></span> <span class="status open svelte-e2jw2j">open</span> <span class="svelte-e2jw2j">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> was marked known: one issue, one fix queued. Its own table says otherwise. The reports in it
+describe three problems, each with its own fix, so each has its own ticket.</p> <aside class="warn svelte-17bri61"><!---->Engineering update, 05 Oct: `parser` fixed (`fix(dates): parse dd/mm for eu locales`), `hint` won't fix (booking-v3 form retired).
+Nothing has been done about the one-day moves: their ticket stays open.<!----></aside><!----> <h2>What #4471 holds</h2> <p class="sum svelte-12oyimm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>parser</code></td><td class="svelte-12oyimm">379</td><td class="tags svelte-12oyimm">parser ×356 · hint ×23</td><td class="svelte-12oyimm">11</td><td class="svelte-12oyimm">2026-04-01 → 2026-10-04</td><td class="svelte-12oyimm">#4471</td></tr><tr class="svelte-12oyimm wrong"><td class="svelte-12oyimm"><code>hint</code></td><td class="svelte-12oyimm">33</td><td class="tags svelte-12oyimm">hint ×18 · parser ×15</td><td class="svelte-12oyimm">3</td><td class="svelte-12oyimm">2026-04-17 → 2026-09-22</td><td class="svelte-12oyimm">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-12oyimm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <h2>The tickets</h2> <ul><li><strong><code>parser</code></strong>, <a href="https://github.com/BartekButrym/mega-s01e03-kb/issues/1" rel="nofollow">#1</a>, fixed. The shared parser read dates month first;
+every tenant here writes the day first, so day and month swapped. The count is the <code>parser</code> row above.</li> <li><strong><code>hint</code></strong>, <a href="https://github.com/BartekButrym/mega-s01e03-kb/issues/2" rel="nofollow">#2</a>, won’t fix. The booking-v3 form printed <code>MM/DD/YYYY</code> under its date field and read the field day first. The table marks this row “not this ticket”: it had no ticket of its own until now.</li> <li><strong>one-day move</strong>, <a href="https://github.com/BartekButrym/mega-s01e03-kb/issues/3" rel="nofollow">#3</a>, open. The reports the desk read as a one-day
+move (the note under the table) describe a date one day off, or one meeting on two days in two cities. No swap of day and month
+explains that, so neither fix closes them. As the desk counts, they stay filed under <code>parser</code> by tenant.</li></ul> <h2>How the reports were read</h2> <ul><li>One report, one id: the export pages overlap, and the table counts each id once.</li> <li>Cause comes from the tenant and the channel (<code>causes.ts</code>), never from the intake tag, which guessed from the reporter’s browser.</li></ul> <h2>Why they were merged</h2> <p>Decision <a href="/kb/decisions/0001-dedupe-by-subject">0001</a> merges on subject line alone. Every one of these reports says some version
+of “wrong date”, so subject matching put three problems in one ticket.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-DNWC-HPS7</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			
+		</div>
+  </body>
+</html>

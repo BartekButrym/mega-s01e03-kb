@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="../../_app/immutable/entry/start.GXA1HX8G.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DLPHJf5b.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CCflzB5j.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/B3ck760V.js" rel="modulepreload">
+		<link href="../../_app/immutable/entry/app.8-6ig8r8.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BnpOIMme.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BG5v0sKB.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DzrvIRbX.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/CyMa8FXv.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/0.DjykM_qP.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/DVJ5pYx9.js" rel="modulepreload">
+		<link href="../../_app/immutable/nodes/5.CLo935Uj.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/C-Aw4taO.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/6F5Jptlk.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/BeNqf_tZ.js" rel="modulepreload">
+		<link href="../../_app/immutable/chunks/0CSW6DJc.js" rel="modulepreload">
+		<!--e2jw2j--><!----><title>#4471 · three problems, not one · support kb</title>
+		<link href="../../_app/immutable/assets/runbook.BhhgOc_n.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/Callout.yLErXQDM.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/CauseTable.DuKfINX_.css" rel="stylesheet">
+		<link href="../../_app/immutable/assets/5.CMZ6TBbc.css" rel="stylesheet">
+  </head>
+  <body data-sveltekit-preload-data="hover">
+    <div style="display: contents"><!--[--><!--[0--><!--[--><!--[--><div class="kb svelte-e2jw2j"><header><a class="crumb svelte-e2jw2j" href="/kb">support desk · kb</a> <h1 class="svelte-e2jw2j">#4471 · three problems, not one</h1> <p class="meta svelte-e2jw2j"><span>owner <b>Bartosz Butrym</b></span> <span class="status open svelte-e2jw2j">open</span> <span class="svelte-e2jw2j">reviewed 2026-10-28 · 0 days ago</span></p></header> <!--[-1--><!--]--> <main><p><a href="/kb/incidents/4471">#4471</a> was marked known: one issue, one fix queued. Its own table says otherwise. The reports in it
+describe three problems, each with its own fix, so each has its own ticket.</p> <aside class="warn svelte-17bri61"><!---->Engineering update, 05 Oct: `parser` fixed (`fix(dates): parse dd/mm for eu locales`), `hint` won't fix (booking-v3 form retired).
+Nothing has been done about the one-day moves: their ticket stays open.<!----></aside><!----> <h2>What #4471 holds</h2> <p class="sum svelte-12oyimm"><strong>412</strong> reports merged into #4471 · <strong>2</strong> causes</p> <table><thead><tr><th>cause</th><th>reports</th><th>tagged as</th><th>tenants</th><th>seen</th><th></th></tr></thead><tbody><!--[--><tr class="svelte-12oyimm"><td class="svelte-12oyimm"><code>parser</code></td><td class="svelte-12oyimm">379</td><td class="tags svelte-12oyimm">parser ×356 · hint ×23</td><td class="svelte-12oyimm">11</td><td class="svelte-12oyimm">2026-04-01 → 2026-10-04</td><td class="svelte-12oyimm">#4471</td></tr><tr class="svelte-12oyimm wrong"><td class="svelte-12oyimm"><code>hint</code></td><td class="svelte-12oyimm">33</td><td class="tags svelte-12oyimm">hint ×18 · parser ×15</td><td class="svelte-12oyimm">3</td><td class="svelte-12oyimm">2026-04-17 → 2026-09-22</td><td class="svelte-12oyimm">not this ticket — no ticket of its own</td></tr><!--]--></tbody></table> <!--[--><!--[0--><p class="note svelte-12oyimm">5 reports read as a one-day move; filed under <code>parser</code> by tenant.</p><!--]--><!--[-1--><!--]--><!--]--><!----> <h2>The tickets</h2> <ul><li><strong><code>parser</code></strong>, <a href="https://github.com/BartekButrym/mega-s01e03-kb/issues/1" rel="nofollow">#1</a>, fixed. The shared parser read dates month first;
+every tenant here writes the day first, so day and month swapped. The count is the <code>parser</code> row above.</li> <li><strong><code>hint</code></strong>, <a href="https://github.com/BartekButrym/mega-s01e03-kb/issues/2" rel="nofollow">#2</a>, won’t fix. The booking-v3 form printed <code>MM/DD/YYYY</code> under its date field and read the field day first. The table marks this row “not this ticket”: it had no ticket of its own until now.</li> <li><strong>one-day move</strong>, <a href="https://github.com/BartekButrym/mega-s01e03-kb/issues/3" rel="nofollow">#3</a>, open. The reports the desk read as a one-day
+move (the note under the table) describe a date one day off, or one meeting on two days in two cities. No swap of day and month
+explains that, so neither fix closes them. As the desk counts, they stay filed under <code>parser</code> by tenant.</li></ul> <h2>How the reports were read</h2> <ul><li>One report, one id: the export pages overlap, and the table counts each id once.</li> <li>Cause comes from the tenant and the channel (<code>causes.ts</code>), never from the intake tag, which guessed from the reporter’s browser.</li></ul> <h2>Why they were merged</h2> <p>Decision <a href="/kb/decisions/0001-dedupe-by-subject">0001</a> merges on subject line alone. Every one of these reports says some version
+of “wrong date”, so subject matching put three problems in one ticket.</p> <!--[0--><p class="stamp svelte-1280m42">desk ref <b class="svelte-1280m42">DR-DNWC-HPS7</b></p><!--]--><!----><!----></main> <footer class="svelte-e2jw2j">Pages are written by people. Tables and charts are built from data at render time.</footer></div><!--]--><!----><!--]--><!--]--> <!--[-1--><!--]--><!--]-->
+			
+			<script>
+				{
+					__sveltekit_h04epn = {
+						base: new URL("../..", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					Promise.all([
+						import("../../_app/immutable/entry/start.GXA1HX8G.js"),
+						import("../../_app/immutable/entry/app.8-6ig8r8.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 5],
+							data: [null,null],
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+  </body>
+</html>

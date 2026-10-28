@@ -1,0 +1,48 @@
+---
+layout: runbook
+title: '#4471 · three problems, not one'
+owner: Bartosz Butrym
+status: open
+reviewed: 2026-10-28
+signature: Bartosz Butrym
+---
+
+<script>
+  import CauseTable from '#lib/kb/CauseTable.svelte';
+  import Callout from '#lib/kb/Callout.svelte';
+  import RenderStamp from '#lib/kb/RenderStamp.svelte';
+</script>
+
+[#4471](/kb/incidents/4471) was marked known: one issue, one fix queued. Its own table says otherwise. The reports in it
+describe three problems, each with its own fix, so each has its own ticket.
+
+<Callout kind="warn">
+Engineering update, 05 Oct: `parser` fixed (`fix(dates): parse dd/mm for eu locales`), `hint` won't fix (booking-v3 form retired).
+Nothing has been done about the one-day moves: their ticket stays open.
+</Callout>
+
+## What #4471 holds
+
+<CauseTable ticket={4471} />
+
+## The tickets
+
+- **`parser`**, [#1](https://github.com/BartekButrym/mega-s01e03-kb/issues/1), fixed. The shared parser read dates month first;
+  every tenant here writes the day first, so day and month swapped. The count is the `parser` row above.
+- **`hint`**, [#2](https://github.com/BartekButrym/mega-s01e03-kb/issues/2), won't fix. The booking-v3 form printed `MM/DD/YYYY`
+  under its date field and read the field day first. The table marks this row "not this ticket": it had no ticket of its own until now.
+- **one-day move**, [#3](https://github.com/BartekButrym/mega-s01e03-kb/issues/3), open. The reports the desk read as a one-day
+  move (the note under the table) describe a date one day off, or one meeting on two days in two cities. No swap of day and month
+  explains that, so neither fix closes them. As the desk counts, they stay filed under `parser` by tenant.
+
+## How the reports were read
+
+- One report, one id: the export pages overlap, and the table counts each id once.
+- Cause comes from the tenant and the channel (`causes.ts`), never from the intake tag, which guessed from the reporter's browser.
+
+## Why they were merged
+
+Decision [0001](/kb/decisions/0001-dedupe-by-subject) merges on subject line alone. Every one of these reports says some version
+of "wrong date", so subject matching put three problems in one ticket.
+
+<RenderStamp {signature} />
