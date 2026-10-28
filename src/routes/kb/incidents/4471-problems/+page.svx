@@ -4,7 +4,7 @@ title: '#4471 · three problems, not one'
 owner: Bartosz Butrym
 status: open
 reviewed: 2026-10-28
-signature: Bartosz Butrym
+signature: BartekButrym
 ---
 
 <script>
